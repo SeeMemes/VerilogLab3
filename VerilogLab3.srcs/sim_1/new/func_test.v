@@ -8,10 +8,6 @@ reg [7:0] a;
 reg [7:0] b;
 wire start, f_busy;
 wire [24:0] y;
-wire [23:0] a3_test;
-wire [7:0] sqrtb_test;
-wire s_end_step;
-wire m_end_step;
 
 assign start = ~rst;
 
@@ -23,10 +19,6 @@ func f(
     .b_b( b ),
     
     .result_bo( y ),
-    .m_res( a3_test ),
-    .s_res( sqrtb_test ),
-    .m_end_step ( m_end_step ),
-    .s_end_step ( s_end_step ),
     .busy( f_busy )
 );
 

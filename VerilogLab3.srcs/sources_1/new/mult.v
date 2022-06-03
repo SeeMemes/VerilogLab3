@@ -8,7 +8,6 @@ module mult(
     input [15:0] a2_bi,
     
     output reg [23:0] y_bo,
-    output reg busy_o,
     output reg end_step_bo
 );
 
@@ -25,18 +24,15 @@ assign end_step_bo1 = ctr == CTR_LIMIT;
 always @( posedge clk_i ) begin
     if ( rst_i ) begin
         ctr <= CTR_DEFAULT;
-        busy_o <= 0;
         y_bo <= 0;
         end_step_bo <= 0;
     end
     else if ( start_i ) begin
         if ( end_step_bo1 ) begin
             ctr <= CTR_DEFAULT;
-            busy_o <= 0;
             end_step_bo <= 1;
         end else if ( !end_step_bo ) begin
             ctr <= next_ctr;
-            busy_o <= 1;
             case ( a2_bi[ ctr ] )
                 1: y_bo <= y_bo + ( a1_bi << ctr );
                 0: y_bo <= y_bo;

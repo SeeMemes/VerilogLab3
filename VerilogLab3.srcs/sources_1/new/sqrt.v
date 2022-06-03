@@ -7,7 +7,6 @@ module sqrt(
     input [7:0] x_bi,
     
     output reg [7:0] y_bo,
-    output reg busy_o,
     output reg end_step_bo
 );
 
@@ -35,20 +34,17 @@ assign next_b = next_y | m;
 always @( posedge clk_i ) begin
     if ( rst_i ) begin
         y_bo <= 0;
-        busy_o <= 0;
         end_step_bo <= 0;
         
         m <= M_DEFAULT;
         x <= x_bi;
     end else if ( start_i ) begin
         if ( end_step_bo0 ) begin
-            busy_o <= 0;
             end_step_bo <= 1;
             
             m <= M_DEFAULT;
         end else if ( !end_step_bo ) begin
             m <= shifted_m;
-            busy_o <= 1;
         
             if ( is_xgeb ) begin
                 y_bo <= next_b;

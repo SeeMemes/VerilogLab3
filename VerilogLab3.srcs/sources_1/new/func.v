@@ -7,15 +7,13 @@ module func(
     input [7:0] a_b,
     input [7:0] b_b,
     
-    output reg [23:0] m_res,
-    output reg [7:0] s_res,
     output [24:0] result_bo,
-    output m_end_step,
-    output s_end_step,
     output reg [2:0] m_state,
-    output [23:0] m_y_bo,
     output reg busy
 );
+
+reg [23:0] m_res;
+reg [7:0] s_res;
 
 assign result_bo = s_res + m_res;
 localparam POWER2 = 2'b0;
@@ -23,10 +21,11 @@ localparam POWER3 = 2'b01;
 localparam ENDSTATE = 2'b10;
 localparam MUL_REFRESH = 2'b11;
 
+wire m_end_step;
+wire [23:0] m_y_bo;
 wire m_start_i;
 wire [7:0] m_a_bi;
 wire [15:0] m_b_bi;
-wire m_busy_o;
 wire m_power_end;
 
 always @( posedge clk ) begin
@@ -62,15 +61,14 @@ mult m(
     .a2_bi( m_b_bi ),
     
     .y_bo( m_y_bo ),
-    .busy_o( m_busy_o ),
     .end_step_bo( m_power_end )
 );
 
 
 reg s_start_i;
-wire s_busy_o;
 reg [7:0] s_x_bi;
 wire [7:0] s_y_bo;
+wire s_end_step;
 
 always @( posedge clk ) begin
     if ( rst ) begin
@@ -92,7 +90,6 @@ sqrt s(
     .x_bi( s_x_bi ),
     
     .y_bo( s_y_bo ),
-    .busy_o( s_busy_o ),
     .end_step_bo( s_end_step )
 );
 
