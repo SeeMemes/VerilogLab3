@@ -2,151 +2,43 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Fri Jun  3 11:31:13 2022
-# Process ID: 24184
+# Start of session at: Sat Jun  4 13:39:37 2022
+# Process ID: 19872
 # Current directory: C:/Users/Elite/Desktop/1/VerilogLab3
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19660 C:\Users\Elite\Desktop\1\VerilogLab3\VerilogLab3.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6408 C:\Users\Elite\Desktop\1\VerilogLab3\VerilogLab3.xpr
 # Log file: C:/Users/Elite/Desktop/1/VerilogLab3/vivado.log
 # Journal file: C:/Users/Elite/Desktop/1/VerilogLab3\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/Elite/Desktop/1/VerilogLab3/VerilogLab3.xpr
 update_compile_order -fileset sources_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
+open_run impl_1
+report_utilization -name utilization_1
+launch_simulation
+source func_test.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
+launch_simulation
+source func_test.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
 launch_simulation
 source func_test.tcl
 close_sim
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-launch_simulation
-launch_simulation
-source func_test.tcl
-close_sim
-launch_simulation
-source func_test.tcl
-close_sim
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-open_run synth_1 -name synth_1
 close_design
-set_property part xc7a100tcsg324-1 [current_project]
-update_ip_catalog
-update_ip_catalog
-update_ip_catalog
-reset_run synth_1
-launch_runs synth_1 -jobs 6
-wait_on_run synth_1
-open_run synth_1 -name synth_1
-set_property IOSTANDARD LVCMOS33 [get_ports [list {b_b[7]} {b_b[6]} {b_b[5]} {b_b[4]} {b_b[3]} {b_b[2]} {b_b[1]} {b_b[0]}]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list {b_b[7]} {b_b[6]} {b_b[5]} {b_b[4]} {b_b[3]} {b_b[2]} {b_b[1]} {b_b[0]}]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list {a_b[7]} {a_b[6]} {a_b[5]} {a_b[4]} {a_b[3]} {a_b[2]} {a_b[1]} {a_b[0]}]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list {m_state[2]} {m_state[1]} {m_state[0]}]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list {result_bo[24]} {result_bo[23]} {result_bo[22]} {result_bo[21]} {result_bo[20]} {result_bo[19]} {result_bo[18]} {result_bo[17]} {result_bo[16]} {result_bo[15]} {result_bo[14]} {result_bo[13]} {result_bo[12]} {result_bo[11]} {result_bo[10]} {result_bo[9]} {result_bo[8]} {result_bo[7]} {result_bo[6]} {result_bo[5]} {result_bo[4]} {result_bo[3]} {result_bo[2]} {result_bo[1]} {result_bo[0]}]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list busy]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list start]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list rst]]
-file mkdir C:/Users/Elite/Desktop/1/VerilogLab3/VerilogLab3.srcs/constrs_1/new
-close [ open C:/Users/Elite/Desktop/1/VerilogLab3/VerilogLab3.srcs/constrs_1/new/Lab3.xdc w ]
-add_files -fileset constrs_1 C:/Users/Elite/Desktop/1/VerilogLab3/VerilogLab3.srcs/constrs_1/new/Lab3.xdc
-set_property target_constrs_file C:/Users/Elite/Desktop/1/VerilogLab3/VerilogLab3.srcs/constrs_1/new/Lab3.xdc [current_fileset -constrset]
-save_constraints -force
-place_ports {a_b[0]} J15
-place_ports {a_b[1]} L16
-place_ports {a_b[2]} M13
-place_ports {a_b[3]} R15
-place_ports {a_b[4]} R17
-place_ports {a_b[5]} T18
-place_ports {a_b[6]} U18
-place_ports {a_b[7]} R13
-place_ports {b_b[0]} T8
-place_ports {b_b[1]} U8
-place_ports {b_b[2]} R16
-place_ports {b_b[3]} T13
-place_ports {b_b[4]} H6
-place_ports {b_b[5]} U12
-place_ports {b_b[6]} U11
-place_ports {b_b[7]} V10
-place_ports {m_state[0]} R12
-place_ports {m_state[1]} M16
-place_ports {m_state[2]} N15
-place_ports {result_bo[0]} H17
-place_ports {result_bo[1]} K15
-place_ports {result_bo[2]} J13
-place_ports {result_bo[3]} N14
-place_ports {result_bo[4]} R18
-place_ports {result_bo[5]} V17
-place_ports {result_bo[6]} U17
-place_ports {result_bo[7]} U16
-place_ports {result_bo[8]} V16
-place_ports {result_bo[9]} T15
-place_ports {result_bo[10]} U14
-place_ports {result_bo[11]} T16
-place_ports {result_bo[12]} V15
-place_ports {result_bo[13]} V14
-place_ports {result_bo[14]} V12
-place_ports {result_bo[15]} V11
-place_ports {result_bo[16]} G14
-place_ports {result_bo[17]} R11
-place_ports {result_bo[18]} N16
-place_ports {result_bo[19]} A4
-place_ports {result_bo[20]} C5
-place_ports {result_bo[21]} B4
-place_ports {result_bo[22]} A3
-place_ports {result_bo[23]} D8
-place_ports {result_bo[24]} D7
-set_property package_pin "" [get_ports [list  busy]]
-startgroup
-set_property package_pin "" [get_ports [list  {result_bo[19]}]]
-place_ports {result_bo[16]} A4
-endgroup
-startgroup
-set_property package_pin "" [get_ports [list  {result_bo[20]}]]
-place_ports {result_bo[17]} C5
-endgroup
-startgroup
-set_property package_pin "" [get_ports [list  {result_bo[21]}]]
-place_ports {result_bo[18]} B4
-endgroup
-startgroup
-set_property package_pin "" [get_ports [list  {result_bo[22]}]]
-place_ports {result_bo[19]} A3
-endgroup
-place_ports {result_bo[20]} A6
-place_ports {result_bo[21]} B6
-place_ports {result_bo[22]} A5
-place_ports {result_bo[23]} C6
-place_ports {result_bo[24]} D8
-place_ports busy N16
-place_ports clk E3
-place_ports rst M17
-place_ports start P17
-save_constraints
-close_design
-reset_run synth_1
-launch_runs synth_1 -jobs 6
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 6
-wait_on_run synth_1
-launch_runs impl_1 -jobs 6
-wait_on_run impl_1
-launch_runs impl_1 -to_step write_bitstream -jobs 6
-wait_on_run impl_1
-open_hw
-connect_hw_server
-open_hw_target
-set_property PROGRAM.FILE {C:/Users/Elite/Desktop/1/VerilogLab3/VerilogLab3.runs/impl_1/func.bit} [get_hw_devices xc7a100t_0]
-current_hw_device [get_hw_devices xc7a100t_0]
-refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
-refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
-set_property PROGRAM.FILE {C:/Users/Elite/Desktop/1/VerilogLab3/VerilogLab3.runs/impl_1/func.bit} [get_hw_devices xc7a100t_0]
-program_hw_devices [get_hw_devices xc7a100t_0]
-refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
-close_hw
+launch_simulation
+source func_test.tcl

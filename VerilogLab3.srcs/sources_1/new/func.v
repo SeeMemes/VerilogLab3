@@ -22,6 +22,7 @@ localparam ENDSTATE = 2'b10;
 localparam MUL_REFRESH = 2'b11;
 
 wire m_end_step;
+wire m_rst;
 wire [23:0] m_y_bo;
 wire m_start_i;
 wire [7:0] m_a_bi;
@@ -29,12 +30,12 @@ wire [15:0] m_b_bi;
 wire m_power_end;
 
 always @( posedge clk ) begin
-    if ( rst ) begin
+    if ( rst || start ) begin
         m_res <= 0;
         m_state <= POWER2;
     end else begin
-        if ( start ) begin
-            if (m_power_end)
+        if ( busy ) begin
+            if ( m_power_end )
                 m_res <= m_y_bo;
         end
     end
@@ -51,11 +52,13 @@ end
 assign m_end_step = m_state == ENDSTATE;
 
 assign m_start_i = (m_state == POWER2 || m_state == POWER3);
+assign m_rst = rst;
 assign m_b_bi = (m_state == POWER3) ? m_res : a_b;
 assign m_a_bi = a_b;
+
 mult m(
     .clk_i( clk ),
-    .rst_i( rst ),
+    .rst_i( m_rst ),
     .start_i( m_start_i ),
     .a1_bi( m_a_bi ),
     .a2_bi( m_b_bi ),
@@ -71,7 +74,7 @@ wire [7:0] s_y_bo;
 wire s_end_step;
 
 always @( posedge clk ) begin
-    if ( rst ) begin
+    if ( rst || start ) begin
         s_start_i <= 0;
         s_res <= 0;
         s_x_bi <= b_b;
@@ -86,7 +89,7 @@ end
 sqrt s(
     .clk_i( clk ),
     .rst_i( rst ),
-    .start_i( s_start_i ),
+    .start_i( start ),
     .x_bi( s_x_bi ),
     
     .y_bo( s_y_bo ),
@@ -94,13 +97,15 @@ sqrt s(
 );
 
 always @( posedge clk ) begin
-    if ( rst )
+    if ( start )
+        busy <= 1;
+    if ( rst || s_end_step && m_end_step )
         busy <= 0;
-    else if ( start )
+    /*else if ( start )
         if ( s_end_step ) begin
             busy <= 0;
         end else
-            busy <= 1;
+            busy <= 1;*/
 end
 
 endmodule

@@ -15,6 +15,7 @@ localparam M_DEFAULT = 1 << ( N - 2 );
 
 reg [7:0] m;
 reg [7:0] x;
+reg busy;
 
 wire end_step_bo0;
 wire [7:0] shifted_m;
@@ -32,13 +33,13 @@ assign next_y = y_bo >> 1;
 assign next_b = next_y | m;
 
 always @( posedge clk_i ) begin
-    if ( rst_i ) begin
+    if ( rst_i || start_i ) begin
         y_bo <= 0;
         end_step_bo <= 0;
         
         m <= M_DEFAULT;
         x <= x_bi;
-    end else if ( start_i ) begin
+    end else if ( busy ) begin
         if ( end_step_bo0 ) begin
             end_step_bo <= 1;
             
@@ -53,6 +54,13 @@ always @( posedge clk_i ) begin
                 y_bo <= next_y;
         end
     end
+end
+
+always @( * ) begin
+    if ( start_i )
+        busy <= 1;
+    else if ( end_step_bo )
+        busy <= 0;
 end
 
 endmodule

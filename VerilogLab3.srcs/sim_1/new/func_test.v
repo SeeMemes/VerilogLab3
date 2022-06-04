@@ -3,13 +3,11 @@
 
 module func_test( );
 
-reg clk, rst;
+reg clk, rst, start;
 reg [7:0] a;
 reg [7:0] b;
-wire start, f_busy;
+wire f_busy;
 wire [24:0] y;
-
-assign start = ~rst;
 
 func f(
     .clk( clk ),
@@ -29,15 +27,20 @@ reg [24:0] expected_val;
 integer i, j;
 initial begin
     clk = 1;
-    for ( i = 2; i < 256; i = i + 1 ) begin
-        for ( j = 0; j < 16; j = j + 1 ) begin
+    rst = 1;
+    
+    #50
+    rst = 0;
+    
+    for ( i = 2; i < 4; i = i + 1 ) begin
+        for ( j = 0; j < 3; j = j + 1 ) begin
             b = j * j;
             a = i;
-            rst = 1;
+            start = 1;
             
             #50
             expected_val = i * i * i + j;
-            rst = 0;
+            start = 0;
             
             #1000
             if ( expected_val == y ) begin
