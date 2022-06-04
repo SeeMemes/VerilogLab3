@@ -32,8 +32,8 @@ initial begin
     #50
     rst = 0;
     
-    for ( i = 2; i < 4; i = i + 1 ) begin
-        for ( j = 0; j < 3; j = j + 1 ) begin
+    for ( i = 3; i < 4; i = i + 1 ) begin
+        for ( j = 2; j < 9; j = j + 1 ) begin
             b = j * j;
             a = i;
             start = 1;
@@ -42,7 +42,7 @@ initial begin
             expected_val = i * i * i + j;
             start = 0;
             
-            #1000
+            #670
             if ( expected_val == y ) begin
                 $display( "CORRECT: actual: %d, expected: %d", y, expected_val );
             end else begin

@@ -101,11 +101,6 @@ always @( posedge clk ) begin
         busy <= 1;
     if ( rst || s_end_step && m_end_step )
         busy <= 0;
-    /*else if ( start )
-        if ( s_end_step ) begin
-            busy <= 0;
-        end else
-            busy <= 1;*/
 end
 
 endmodule
