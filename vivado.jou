@@ -42,3 +42,9 @@ close_sim
 close_design
 launch_simulation
 source func_test.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
